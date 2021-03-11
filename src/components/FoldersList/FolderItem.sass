@@ -1,0 +1,16 @@
+@import '../../styles/settings/variables'
+
+.FolderItem
+  padding: 6px 16px
+  margin-bottom: 21px
+  border: 1px solid $list-item-border-color
+  border-radius: 34px
+  color: $list-item-color
+  transition: border 0.2s ease, background 0.2s ease, color 0.2s ease
+  &:hover
+    border-color: darken($list-item-border-color, 15%)
+    color: darken($list-item-color, 25%)
+    cursor: pointer
+  &.FolderItem--active
+    border: none
+    background: $list-item-active-background

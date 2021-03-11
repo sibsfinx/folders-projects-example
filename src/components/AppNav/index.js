@@ -3,7 +3,7 @@ import './index.sass';
 const AppNav = () => {
   return (
     <div className="AppNav">
-      <header className="navbar fixed-top navbar-light bg-light">
+      <header className="navbar">
         <div className="container-fluid">
           <a>Logo</a>
           <a>Account</a>
