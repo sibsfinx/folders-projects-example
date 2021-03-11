@@ -27,21 +27,25 @@ class AppContainer extends Component {
     console.log(this.props);
     return (
       <div className="AppContainer">
-        <FoldersList {...this.props.folders} />
-        <AppContent items={getItems(this.props.items, this.props.match.params.id)} />
+        <FoldersList folders={data.folders} />
+        <AppContent items={data.items} />
+        {/*
+          <AppContent items={getItems(this.props.items, this.props.match.params.id)} />
+        */}
       </div>
     )
   }
 }
 
 const App = () => {
+  console.log(data);
   return (
     <div className="App">
       <AppNav />
         <Router>
           <Switch>
-            <Route path="/folders" component={AppContainer} {...data} />
-            <Route path="/folders/:id" component={AppContainer} {...data}  />
+              <Route path="/folders" component={AppContainer} />
+              <Route path="/folders/:id" component={AppContainer} />
           </Switch>
         </Router>
     </div>

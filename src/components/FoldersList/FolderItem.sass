@@ -1,6 +1,7 @@
 @import '../../styles/settings/variables'
 
 .FolderItem
+  display: block
   padding: 6px 16px
   margin-bottom: 21px
   border: 1px solid $list-item-border-color
@@ -11,6 +12,7 @@
     border-color: darken($list-item-border-color, 15%)
     color: darken($list-item-color, 25%)
     cursor: pointer
+    text-decoration: none
   &.FolderItem--active
     border: none
     background: $list-item-active-background
