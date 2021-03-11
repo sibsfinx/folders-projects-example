@@ -1,0 +1,28 @@
+@import 'bootstrap/scss/bootstrap.scss'
+
+$FoldersList-width: 300px
+$AppContent-background: #f7f8fc
+
+.App
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  overflow: hidden
+  display: flex
+  flex-direction: vertical
+  flex-wrap: wrap
+
+.AppNav
+  flex: 1 0 100%
+  padding: $grid-gutter-width
+
+.FoldersList
+  flex: 0 0 $FoldersList-width
+  padding: $grid-gutter-width
+  background: #fff
+
+.AppContent
+  flex: 1 1 auto
+  background: $AppContent-background
