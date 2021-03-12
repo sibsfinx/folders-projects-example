@@ -1,10 +1,7 @@
 @import './styles/settings/variables'
 @import 'bootstrap/scss/bootstrap.scss'
 
-$FoldersList-width: 300px
-$AppContent-background: #f7f8fc
-
-// Layout
+// App layout
 
 .App
   position: fixed
@@ -14,23 +11,29 @@ $AppContent-background: #f7f8fc
   height: 100%
   overflow: hidden
   display: flex
-  flex-direction: column
-  flex-wrap: wrap
+  flex:
+    direction: row
+    wrap: wrap
 
 .AppNav
-  flex: 0 1 auto
+  flex: 1 0 100%
 
 .AppContainer
   flex: 1 0
   display: flex
-  flex-direction: row
+  height: 100%
 
-.FoldersList
-  flex: 0 0 $FoldersList-width
+.AppFilters
+  flex: 0 0 $AppFilters-width
+  display: flex
+  overflow-y: auto
   padding: $grid-gutter-width
   background: #fff
 
 .AppContent
   flex: 1 1 auto
-  padding: $grid-gutter-width $grid-gutter-width*1.5
-  background: $AppContent-background
+  position: relative
+  display: flex
+  overflow-y: auto
+  padding: $grid-gutter-width
+  background: $Projects-background

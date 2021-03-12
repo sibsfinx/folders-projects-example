@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 import AppNav from './components/AppNav';
 import FoldersList from './components/FoldersList';
-import AppContent from './components/AppContent';
+import Projects from './components/Projects';
 import data from './data/SampleData.js';
 
 const getItems = (items, activeItemId) => {
@@ -27,11 +27,12 @@ class AppContainer extends Component {
     console.log(this.props);
     return (
       <div className="AppContainer">
-        <FoldersList folders={data.folders} />
-        <AppContent items={data.items} />
-        {/*
-          <AppContent items={getItems(this.props.items, this.props.match.params.id)} />
-        */}
+        <div className="AppFilters">
+          <FoldersList folders={data.folders} />
+        </div>
+        <div className="AppContent">
+          <Projects items={data.items} />
+        </div>
       </div>
     )
   }
