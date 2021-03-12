@@ -6,7 +6,7 @@ const data = {
         },
         {
             id: 2,
-            folderId: 2
+            folderId: 1
         },
         {
             id: 3,

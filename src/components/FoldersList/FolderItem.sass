@@ -8,11 +8,13 @@
   border-radius: 34px
   color: $list-item-color
   transition: border 0.2s ease, background 0.2s ease, color 0.2s ease
-  &:hover
-    border-color: darken($list-item-border-color, 15%)
-    color: darken($list-item-color, 25%)
-    cursor: pointer
-    text-decoration: none
+  cursor: pointer
   &.FolderItem--active
-    border: none
+    border-color: $list-item-active-background
     background: $list-item-active-background
+  &:hover
+    border-color: $highlight-color
+    background: $highlight-color
+    color: #fff
+    text-decoration: none
+

@@ -12,8 +12,8 @@ class FolderItem extends Component {
     } = this.props;
 
     return (
-      <Link to={(item && item.id) ? `/folders/${item.id}` : `/folders`}
-          className={`FolderItem FolderItem--${(active === true) || !item ? 'active' : ''}`}>
+      <Link to={(item && item.id) ? `/folders/${item.id}` : `/`}
+          className={`FolderItem FolderItem--${(active === true) ? 'active' : ''}`}>
         {(item && item.id)
           ? (
             `Folder ${item.id}`

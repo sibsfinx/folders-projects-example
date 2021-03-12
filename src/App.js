@@ -23,15 +23,19 @@ const getItems = (items, activeItemId) => {
 }
 
 class AppContainer extends Component {
+  getProjects(items, folderId) {
+    const folderItems = folderId ? (items.filter((item) => { return (item.folderId.toString() === folderId.toString())})) : items;
+    return folderItems;
+  }
+
   render() {
-    console.log(this.props);
     return (
       <div className="AppContainer">
         <div className="AppFilters">
-          <FoldersList folders={data.folders} />
+          <FoldersList folders={data.folders} activeItemId={this.props.match.params.id}/>
         </div>
         <div className="AppContent">
-          <Projects items={data.items} />
+          <Projects items={(() => this.getProjects(data.items, this.props.match.params.id))()} />
         </div>
       </div>
     )
@@ -45,8 +49,8 @@ const App = () => {
       <AppNav />
         <Router>
           <Switch>
-              <Route path="/folders" component={AppContainer} />
-              <Route path="/folders/:id" component={AppContainer} />
+            <Route exact path="/" component={AppContainer} />
+            <Route path="/folders/:id" component={AppContainer} />
           </Switch>
         </Router>
     </div>

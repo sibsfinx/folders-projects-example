@@ -2,13 +2,37 @@
 
 .ProjectItem
   flex: 1 0 100%
-  padding: $project-item-padding
-  border-radius: $project-item-border-radius
-  background: $project-item-background
-  color: $project-item-color
+  position: relative
   display: flex;
   flex-direction: column
   align-content: center
   justify-content: center
-  text-align: center
+  padding: $project-item-padding
+  border-radius: $project-item-border-radius
+  background: $project-item-background
   font-size: (40px/12px)*1em
+  text-align: center
+  color: $project-item-color
+  cursor: pointer
+  border: 1px solid transparent
+  transition: border 0.2s ease
+  &.ProjectItem--selected
+    border-color: $highlight-color
+  &:hover
+    border: 1px solid $highlight-color
+
+.ProjectItem__selector
+  display: block
+  position: absolute
+  top: $project-item-padding
+  right: $project-item-padding
+  width: 24px
+  height: 24px
+  border-radius: 100%
+  border: 1px solid $project-item-selector-border-color
+  transition: background 0.2s ease, border 0.2s ease
+  &:hover
+    border-color: $highlight-color
+  .ProjectItem--selected &
+    background: $project-item-selector-border-color
+

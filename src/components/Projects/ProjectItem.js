@@ -12,6 +12,13 @@ class ProjectItem extends Component {
     }
   }
 
+  toggleSelect(e) {
+    e.preventDefault();
+    this.setState(state => ({
+      selected: !state.selected
+    }))
+  }
+
   render() {
     const {
       item,
@@ -20,6 +27,7 @@ class ProjectItem extends Component {
 
     return (
       <div className={`ProjectItem ProjectItem--${(this.state.selected === true) ? 'selected' : ''}`}>
+        <button className="ProjectItem__selector" onClick={(e) => this.toggleSelect(e)}></button>
         {(item && item.id) ? item.id : ``}
       </div>
     )

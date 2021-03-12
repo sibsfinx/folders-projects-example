@@ -14,10 +14,10 @@ class FoldersList extends Component {
 
     return (
       <div className="FoldersList">
-        <FolderItem key="0" />
+        <FolderItem key="0" active={!activeItemId} />
         { (folders && folders.length > 0)
           ? folders.map((item, i) => (
-            <FolderItem key={i+1} item={item} active={item.id === activeItemId}/>
+            <FolderItem key={i+1} item={item} active={item && activeItemId && (item.id.toString() === activeItemId.toString())} />
           )) : (
             null
           )
