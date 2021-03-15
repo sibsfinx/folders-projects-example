@@ -5,8 +5,8 @@ const AppNav = () => {
     <div className="AppNav">
       <header className="navbar">
         <div className="container-fluid">
-          <a>Logo</a>
-          <a>Account</a>
+          <a href="/">Logo</a>
+          <a href="/">Account</a>
         </div>
       </header>
     </div>

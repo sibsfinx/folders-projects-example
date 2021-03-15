@@ -1,51 +1,62 @@
 import './index.sass';
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import ProjectItem from './ProjectItem.js';
+import ProjectDraggable from '../Projects/ProjectDraggable';
+
 // import PropTypes from 'prop-types';
 
 class ProjectsList extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      selectedItems: this.props.items.map((item) => {
-        return {id: item.id, selected: false}
-      })
-    };
+    this.dragElement = React.createRef();
   }
 
-  handleSelect(args) {
-    const selected = this.state.selectedItems;
-    let item = selected.find((i) => {return i.id === args.id})
-    item.selected = args.selected;
-    this.setState({
-      selectedItems: selected,
+  getSelectedItems() {
+    return this.props.items.filter((item) => {
+      return (item.selected === true);
     });
   }
 
+  getSelectedItemsCount() {
+    return this.getSelectedItems().length;
+  }
+
+  handleSelect(args) {
+    this.props.handleSelect(this, args);
+  }
+
   handleDrag(e) {
-    this.props.handleDragStart(e.clientX, e.clientY);
+    const crt = this.dragElement.current.dragElement.current;
+    crt.style.display = 'block';
+    e.dataTransfer.setDragImage(crt, 0, 0);
+    //this.props.handleDrag.call();
   }
 
   render() {
     const {
-      items
+      items,
+      handleSelect
     } = this.props;
-
-    console.log(this.props);
 
     return (
       <div className="ProjectsList">
-        {JSON.stringify(this.state)}
         <br/>
         { (items && items.length > 0)
           ? items.map((item, i) => (
-            <div className="ProjectsList__item" key={i+1} draggable={true} onDragStart={(e) => this.handleDrag(e)} >
-              <ProjectItem key={i+1} item={item} onSelect={this.handleSelect.bind(this)} />
+            <div className="ProjectsList__item" key={i+1}>
+              <ProjectItem
+                key={i+1}
+                item={item}
+                selected={item.selected}
+                onSelect={this.handleSelect.bind(this)}
+                onDrag={(e) => this.handleDrag(e)}
+              />
             </div>
           )) : (
             null
           )
         }
+        <ProjectDraggable ref={this.dragElement} show={false} count={this.props.items.length} />
       </div>
     )
   }

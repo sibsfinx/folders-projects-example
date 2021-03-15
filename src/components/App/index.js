@@ -1,11 +1,8 @@
 import './index.sass';
-import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link,
-  useParams
+  Route
 } from "react-router-dom";
 import AppNav from '../AppNav';
 import AppContainer from '../AppContainer';
