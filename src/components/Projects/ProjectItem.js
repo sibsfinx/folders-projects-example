@@ -12,22 +12,23 @@ class ProjectItem extends Component {
     }
   }
 
-  toggleSelect(e) {
+  handleSelectToggle(e) {
     e.preventDefault();
-    this.setState(state => ({
+    this.setState((state) => ({
       selected: !state.selected
-    }))
+    }), () => {
+      this.props.onSelect.call(this, {id: this.props.item.id, selected: this.state.selected});
+    });
   }
 
   render() {
     const {
-      item,
-      active
+      item
     } = this.props;
 
     return (
-      <div className={`ProjectItem ProjectItem--${(this.state.selected === true) ? 'selected' : ''}`}>
-        <button className="ProjectItem__selector" onClick={(e) => this.toggleSelect(e)}></button>
+      <div className={`ProjectItem ${(this.state.selected === true) ? 'ProjectItem--selected' : ''}`} >
+        <button className="ProjectItem__selector" onClick={(e) => this.handleSelectToggle(e)}></button>
         {(item && item.id) ? item.id : ``}
       </div>
     )

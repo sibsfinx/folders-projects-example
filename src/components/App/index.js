@@ -8,43 +8,9 @@ import {
   useParams
 } from "react-router-dom";
 import AppNav from '../AppNav';
-import FoldersList from '../FoldersList';
-import Projects from '../Projects';
-
-import data from '../../data/SampleData.js';
-
-const getItems = (items, activeItemId) => {
-  if (activeItemId) {
-    return items.filter((item) => {
-      return item.id === activeItemId;
-    })
-  } else {
-    return data.items;
-  }
-}
-
-class AppContainer extends Component {
-  getProjects(items, folderId) {
-    const folderItems = folderId ? (items.filter((item) => { return (item.folderId.toString() === folderId.toString())})) : items;
-    return folderItems;
-  }
-
-  render() {
-    return (
-      <div className="AppContainer">
-        <div className="AppFilters">
-          <FoldersList folders={data.folders} activeItemId={this.props.match.params.id}/>
-        </div>
-        <div className="AppContent">
-          <Projects items={(() => this.getProjects(data.items, this.props.match.params.id))()} />
-        </div>
-      </div>
-    )
-  }
-}
+import AppContainer from '../AppContainer';
 
 const App = () => {
-  console.log(data);
   return (
     <div className="App">
       <AppNav />

@@ -36,3 +36,27 @@
   .ProjectItem--selected &
     background: $project-item-selector-border-color
 
+.ProjectsList__draggable
+  @extend .ProjectItem
+  @extend .ProjectItem--selected
+  display: block
+  position: absolute
+  width: 182px
+  height: 102px
+  opacity: 0.7
+  z-index: 1110
+
+.ProjectsList__draggable__counter
+  display: flex
+  flex-direction: column
+  justify-content: center
+  position: absolute
+  top: -$project-item-draggable-size/2
+  left: -$project-item-draggable-size/2
+  width: $project-item-draggable-size
+  height: $project-item-draggable-size
+  border-radius: 100%
+  background: $highlight-color
+  color: #fff
+  font-size: $font-size-base
+
