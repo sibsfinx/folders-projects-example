@@ -1,4 +1,4 @@
-import './App.sass';
+import './index.sass';
 import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
@@ -7,10 +7,11 @@ import {
   Link,
   useParams
 } from "react-router-dom";
-import AppNav from './components/AppNav';
-import FoldersList from './components/FoldersList';
-import Projects from './components/Projects';
-import data from './data/SampleData.js';
+import AppNav from '../AppNav';
+import FoldersList from '../FoldersList';
+import Projects from '../Projects';
+
+import data from '../../data/SampleData.js';
 
 const getItems = (items, activeItemId) => {
   if (activeItemId) {
