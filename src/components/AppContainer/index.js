@@ -5,19 +5,37 @@ import Projects from '../Projects';
 
 import getSelectedItems from '../../utils/getSelectedItems';
 
-import data from '../../data/SampleData.js';
+const getData = (callback) => {
+  fetch('/data.json')
+    .then((response) => {
+      return response.json();
+    })
+    .then((json) => {
+      callback.call(this, json);
+    });
+}
 
 class AppContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
       projectDragging: false,
-      folders: data.folders,
-      items: data.items.map((item) => {
-        return {id: item.id, folderId: item.folderId, selected: false}
-      })
+      folders: [],
+      items: []
     };
     this.projectsList = React.createRef();
+  }
+
+
+  componentDidMount() {
+    getData(this.updateData.bind(this));
+  }
+
+  updateData(data) {
+    this.setState({
+      folders: data.folders,
+      items: data.items
+    })
   }
 
   getFolderItems() {

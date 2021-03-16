@@ -1,0 +1,55 @@
+@import '../../styles/settings/variables'
+@import './ProjectItem'
+
+$project-item-draggable-z-index: 1110
+
+%ProjectItem__draggable__appearance
+  @extend %ProjectItem__appearance
+  @extend %ProjectItem--selected__appearance
+  display: block
+  position: absolute
+  width: 100%
+  height: 100%
+  top: 0
+  left: 0
+
+.ProjectsList__draggable
+  display: block
+  position: absolute
+  width: 182px
+  height: 102px
+  opacity: 0.7
+  z-index: $project-item-draggable-z-index
+  &.ProjectsList__draggable--hidden
+    top: -200vh
+    left: -200vw
+
+.ProjectsList__draggable__card
+  @extend %ProjectItem__draggable__appearance
+  z-index: $project-item-draggable-z-index + 2
+  top: 5px
+  left: 5px
+  &:before
+    @extend %ProjectItem__draggable__appearance
+    content: ' '
+    margin:
+      top: -5px
+      left: -5px
+    z-index: $project-item-draggable-z-index + 1
+
+
+.ProjectsList__draggable__counter
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  position: absolute
+  top: -$project-item-draggable-size/2
+  left: -$project-item-draggable-size/2
+  width: $project-item-draggable-size
+  height: $project-item-draggable-size
+  border-radius: 100%
+  background: $highlight-color
+  color: #fff
+  font-size: $font-size-base
+  z-index: $project-item-draggable-z-index + 3

@@ -21,6 +21,10 @@ class ProjectItem extends Component {
       showFolder
     } = this.props;
 
+    const styles = {
+      backgroundImage: `url(${item.image})`
+    };
+
     const folderElement = (showFolder ? (
       <div className="ProjectItem__folder">
         {`Folder ${item.folderId}`}
@@ -32,9 +36,12 @@ class ProjectItem extends Component {
           className={`ProjectItem ${(this.props.selected === true) ? 'ProjectItem--selected' : ''}`}
           draggable={true}
           onDragStart={(e) => this.handleDrag(e)}
+          style={styles}
         >
         <button className="ProjectItem__selector" onClick={(e) => this.handleSelectToggle(e)}></button>
-        {(item && item.id) ? item.id : ``}
+        <div className="ProjectItem__content">
+          {(item && item.id) ? item.id : ``}
+        </div>
         { folderElement }
       </div>
     )

@@ -1,12 +1,6 @@
 @import '../../styles/settings/variables'
 
-.ProjectItem
-  flex: 1 0 100%
-  position: relative
-  display: flex;
-  flex-direction: column
-  align-content: center
-  justify-content: center
+%ProjectItem__appearance
   padding: $project-item-padding
   border-radius: $project-item-border-radius
   background: $project-item-background
@@ -16,10 +10,37 @@
   cursor: pointer
   border: 1px solid transparent
   transition: border 0.2s ease
+
+%ProjectItem--selected__appearance
+  border-color: $highlight-color
+
+.ProjectItem
+  @extend %ProjectItem__appearance
+  flex: 1 0 100%
+  position: relative
+  background:
+    size: cover
+    position: center center
   &.ProjectItem--selected
-    border-color: $highlight-color
+    @extend %ProjectItem--selected__appearance
   &:hover
     border: 1px solid $highlight-color
+
+.ProjectItem__content
+  position: absolute
+  top: 50%
+  left: 50%
+  width: 2em
+  height: 2em
+  margin:
+    top: -1em
+    left: -1em
+  border-radius: 100%
+  background: rgba($project-item-background, 0.8)
+  display: flex
+  flex-direction: column
+  align-content: center
+  justify-content: center
 
 .ProjectItem__selector
   display: block
@@ -35,33 +56,6 @@
     border-color: $highlight-color
   .ProjectItem--selected &
     background: $project-item-selector-border-color
-
-.ProjectsList__draggable
-  @extend .ProjectItem
-  @extend .ProjectItem--selected
-  display: block
-  position: absolute
-  width: 182px
-  height: 102px
-  opacity: 0.7
-  z-index: 1110
-  &.ProjectsList__draggable--hidden
-    top: -200vh
-    left: -200vw
-
-.ProjectsList__draggable__counter
-  display: flex
-  flex-direction: column
-  justify-content: center
-  position: absolute
-  top: -$project-item-draggable-size/2
-  left: -$project-item-draggable-size/2
-  width: $project-item-draggable-size
-  height: $project-item-draggable-size
-  border-radius: 100%
-  background: $highlight-color
-  color: #fff
-  font-size: $font-size-base
 
 .ProjectItem__folder
   display: block
