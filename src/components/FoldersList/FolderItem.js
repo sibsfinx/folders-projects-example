@@ -1,13 +1,13 @@
 import './FolderItem.sass';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from "react-router-dom";
+import routes from '../../routes.js';
 
 class FolderItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      dragTarget: false
+      dragTarget: this.props.dragTarget
     };
   }
 
@@ -34,15 +34,18 @@ class FolderItem extends Component {
     this.props.handleDragRelease.call(this, {folderId: this.props.item.id});
   }
 
+  getClassName() {
+    return `FolderItem FolderItem--${(this.props.active === true) ? 'active' : ''} ${this.state.dragTarget ? 'FolderItem--drag-target' : ''}`
+  }
+
   render() {
     const {
-      item,
-      active
+      item
     } = this.props;
 
     return (
-      <Link to={(item && item.id) ? `/folders/${item.id}` : `/`}
-      className={`FolderItem FolderItem--${(active === true) ? 'active' : ''} ${this.state.dragTarget ? 'FolderItem--drag-target' : ''}`}
+      <a href={(item && item.id) ? `${routes.folders}/${item.id}` : routes.root}
+        className={this.getClassName()}
         onDragEnter={(e) => this.handleDragEnter(e)}
         onDragLeave={(e) => this.handleDragLeave(e)}
         onDragOver={(e) => this.handleDragOver(e)}
@@ -55,7 +58,7 @@ class FolderItem extends Component {
             `All projects`
           )
         }
-      </Link>
+      </a>
     )
   }
 }
@@ -63,6 +66,7 @@ class FolderItem extends Component {
 FolderItem.propTypes = {
   item: PropTypes.object,
   active: PropTypes.bool,
+  dragTarget: PropTypes.bool,
   handleDragRelease: PropTypes.func
 }
 

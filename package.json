@@ -1,5 +1,5 @@
 {
-  "name": "vectary-test",
+  "name": "projects-folders-test-react",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -116,7 +116,7 @@
       "<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
     ],
     "testEnvironment": "jsdom",
-    "testRunner": "/Users/alexander/Documents/code/vectary-test/node_modules/jest-circus/runner.js",
+    "testRunner": "/Users/alexander/Documents/code/projects-folders-test-react/node_modules/jest-circus/runner.js",
     "transform": {
       "^.+\\.(js|jsx|mjs|cjs|ts|tsx)$": "<rootDir>/config/jest/babelTransform.js",
       "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
@@ -158,6 +158,8 @@
     "@storybook/addon-actions": "^6.1.21",
     "@storybook/addon-essentials": "^6.1.21",
     "@storybook/addon-links": "^6.1.21",
-    "@storybook/react": "^6.1.21"
+    "@storybook/addon-storyshots": "^6.1.21",
+    "@storybook/react": "^6.1.21",
+    "react-test-renderer": "^17.0.1"
   }
 }

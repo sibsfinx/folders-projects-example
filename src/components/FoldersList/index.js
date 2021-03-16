@@ -20,7 +20,12 @@ class FoldersList extends Component {
         <FolderItem key="0" active={!activeItemId} />
         { (folders && folders.length > 0)
           ? folders.map((item, i) => (
-            <FolderItem key={i+1} item={item} active={this.isItemActive(item)} handleDragRelease={this.props.handleDragRelease} />
+            <FolderItem
+              key={i+1}
+              item={item}
+              active={this.isItemActive(item)}
+              dragTarget={false}
+              handleDragRelease={this.props.handleDragRelease} />
           )) : (
             null
           )

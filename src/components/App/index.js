@@ -4,6 +4,7 @@ import {
   Switch,
   Route
 } from "react-router-dom";
+import routes from '../../routes.js';
 import AppNav from '../AppNav';
 import AppContainer from '../AppContainer';
 
@@ -13,8 +14,8 @@ const App = () => {
       <AppNav />
         <Router>
           <Switch>
-            <Route exact path="/" component={AppContainer} />
-            <Route path="/folders/:id" component={AppContainer} />
+            <Route exact path={routes.root} component={AppContainer} />
+            <Route path={`${routes.folders}/:id`} component={AppContainer} />
           </Switch>
         </Router>
     </div>
