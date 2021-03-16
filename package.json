@@ -77,7 +77,7 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook -o ./build/storybook"
   },
   "eslintConfig": {
     "extends": [
