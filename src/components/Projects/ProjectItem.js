@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class ProjectItem extends Component {
+  // TODO rewrite handlers
+
   handleSelectToggle(e) {
     e.preventDefault();
     this.props.onSelect.call(this, {id: this.props.item.id, selected: !this.props.selected});
@@ -40,6 +42,7 @@ class ProjectItem extends Component {
 }
 
 ProjectItem.propTypes = {
+  item: PropTypes.object,
   selected: PropTypes.bool,
   showFolder: PropTypes.bool,
   onSelect: PropTypes.func,

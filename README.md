@@ -1,4 +1,9 @@
-# Getting Started with Create React App
+# Folders and projects app
+
+- React app with react-router
+- Storybook with components
+- Mock data jn JSON file
+- Mock API request
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -10,6 +15,9 @@ In the project directory, you can run:
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+### `yarn storybook`
+Open [http://localhost:6006](http://localhost:6006) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
