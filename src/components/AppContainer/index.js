@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import FoldersList from '../FoldersList';
 import Projects from '../Projects';
 
+import getSelectedItems from '../../utils/getSelectedItems';
+
 import data from '../../data/SampleData.js';
 
 class AppContainer extends Component {
@@ -18,10 +20,15 @@ class AppContainer extends Component {
     this.projectsList = React.createRef();
   }
 
-  getSelectedItems() {
-    return this.state.items.filter((item) => {
-      return (item.selected === true);
-    });
+  getFolderItems() {
+    if (this.props.match.params && this.props.match.params.id) {
+      const items = this.state.items.filter((item) => {
+        return item.folderId.toString() === this.props.match.params.id.toString()
+      })
+      return items;
+    } else {
+      return this.state.items;
+    }
   }
 
   unselectItems() {
@@ -35,9 +42,8 @@ class AppContainer extends Component {
   }
 
   handleSelect(...args) {
-    // save selected items to state here
-    const itemId = args[1].id;
-    const itemSelected = args[1].selected;
+    const itemId = args[0].id;
+    const itemSelected = args[0].selected;
     const selected = this.state.items;
     let item = this.state.items.find((i) => {return i.id === itemId});
     item.selected = itemSelected;
@@ -47,7 +53,7 @@ class AppContainer extends Component {
   }
 
   handleDragRelease(...args) {
-    this.moveItemsToFolder(this.getSelectedItems(), args[0].folderId);
+    this.moveItemsToFolder(getSelectedItems(this.state.items), args[0].folderId);
   }
 
   moveItemsToFolder(items, folderId) {
@@ -68,6 +74,8 @@ class AppContainer extends Component {
   }
 
   render() {
+    const folderItems = this.getFolderItems();
+
     return (
       <div className="AppContainer">
         <div className="AppFilters">
@@ -80,7 +88,8 @@ class AppContainer extends Component {
         <div className="AppContent">
           <Projects
             ref={this.projectsList}
-            items={this.state.items.filter((item) => {return item.folderId.toString() === this.props.match.params.id.toString()})}
+            items={folderItems}
+            activeFolderId={this.props.match.params.id}
             handleSelect={this.handleSelect.bind(this)}
           />
         </div>

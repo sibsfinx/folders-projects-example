@@ -1,8 +1,7 @@
 import './FolderItem.sass';
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
-
-// import PropTypes from 'prop-types';
 
 class FolderItem extends Component {
   constructor(props) {
@@ -59,6 +58,12 @@ class FolderItem extends Component {
       </Link>
     )
   }
+}
+
+FolderItem.propTypes = {
+  item: PropTypes.object,
+  active: PropTypes.bool,
+  handleDragRelease: PropTypes.func
 }
 
 export default FolderItem;

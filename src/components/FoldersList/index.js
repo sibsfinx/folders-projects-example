@@ -1,7 +1,7 @@
 import './index.sass';
 import React, { Component } from 'react';
 import FolderItem from './FolderItem.js';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 class FoldersList extends Component {
   isItemActive(item) {
@@ -28,6 +28,12 @@ class FoldersList extends Component {
       </div>
     )
   }
+}
+
+FoldersList.propTypes = {
+  folders: PropTypes.array,
+  activeItemId: PropTypes.number,
+  handleDragRelease: PropTypes.func
 }
 
 export default FoldersList;

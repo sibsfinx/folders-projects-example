@@ -1,9 +1,10 @@
 import './index.sass';
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 import ProjectItem from './ProjectItem.js';
 import ProjectDraggable from '../Projects/ProjectDraggable';
+import getSelectedItems from '../../utils/getSelectedItems';
 
-// import PropTypes from 'prop-types';
 
 class ProjectsList extends Component {
   constructor(props) {
@@ -11,32 +12,24 @@ class ProjectsList extends Component {
     this.dragElement = React.createRef();
   }
 
-  getSelectedItems() {
-    return this.props.items.filter((item) => {
-      return (item.selected === true);
-    });
-  }
-
   getSelectedItemsCount() {
-    return this.getSelectedItems().length;
-  }
-
-  handleSelect(args) {
-    this.props.handleSelect(this, args);
+    return getSelectedItems(this.props.items).length;
   }
 
   handleDrag(e) {
     const crt = this.dragElement.current.dragElement.current;
     crt.style.display = 'block';
     e.dataTransfer.setDragImage(crt, 0, 0);
-    //this.props.handleDrag.call();
   }
 
   render() {
     const {
       items,
+      activeFolderId,
       handleSelect
     } = this.props;
+
+    const selectedItemsCount = this.getSelectedItemsCount();
 
     return (
       <div className="ProjectsList">
@@ -48,7 +41,8 @@ class ProjectsList extends Component {
                 key={i+1}
                 item={item}
                 selected={item.selected}
-                onSelect={this.handleSelect.bind(this)}
+                showFolder={!activeFolderId}
+                onSelect={handleSelect}
                 onDrag={(e) => this.handleDrag(e)}
               />
             </div>
@@ -56,10 +50,15 @@ class ProjectsList extends Component {
             null
           )
         }
-        <ProjectDraggable ref={this.dragElement} show={false} count={this.props.items.length} />
+        <ProjectDraggable ref={this.dragElement} show={false} count={selectedItemsCount} />
       </div>
     )
   }
+}
+
+ProjectsList.propTypes = {
+  items: PropTypes.array,
+  handleSelect: PropTypes.func
 }
 
 export default ProjectsList;

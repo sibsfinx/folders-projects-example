@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 class ProjectDraggable extends Component {A
   constructor(props) {
@@ -17,5 +17,11 @@ class ProjectDraggable extends Component {A
     )
   }
 }
+
+ProjectDraggable.propTypes = {
+  show: PropTypes.bool,
+  count: PropTypes.number
+}
+
 
 export default ProjectDraggable;
