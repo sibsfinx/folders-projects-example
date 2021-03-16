@@ -1,5 +1,30 @@
 @import '../../styles/settings/variables'
 
+%AppNav__element
+  display: block
+  width: 32px
+  height: 32px
+  border-radius: 32px
+  background: $placeholder-item-background
+
 .navbar
   padding: 1em
   border-bottom: 1px solid $app-border-color
+
+.AppNav__logo
+  @extend %AppNav__element
+  order: 1
+  width: 155px
+
+.AppNav__account
+  order: 2
+  display: flex
+
+.AppNav__avatar
+  @extend %AppNav__element
+  margin-right: 20px
+
+.AppNav__settings
+  @extend %AppNav__element
+  width: 137px
+

@@ -33,7 +33,6 @@ class ProjectsList extends Component {
 
     return (
       <div className="ProjectsList">
-        <br/>
         { (items && items.length > 0)
           ? items.map((item, i) => (
             <div className="ProjectsList__item" key={i+1}>

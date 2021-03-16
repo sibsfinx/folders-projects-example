@@ -5,8 +5,11 @@ const AppNav = () => {
     <div className="AppNav">
       <header className="navbar">
         <div className="container-fluid">
-          <a href="/">Logo</a>
-          <a href="/">Account</a>
+          <a href="/" className="AppNav__logo"></a>
+          <div className="AppNav__account">
+            <a href="/" className="AppNav__avatar"></a>
+            <a href="/" className="AppNav__settings"></a>
+          </div>
         </div>
       </header>
     </div>
