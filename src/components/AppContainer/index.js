@@ -5,14 +5,31 @@ import Projects from '../Projects';
 
 import getSelectedItems from '../../utils/getSelectedItems';
 
-const getData = (callback) => {
+const fetchData = (callback) => {
   fetch('/data.json')
-    .then((response) => {
+   .then((response) => {
       return response.json();
     })
     .then((json) => {
       callback.call(this, json);
     });
+}
+
+const postData = (data, callback) => {
+  console.log('post data to server');
+  // fetch('', {
+  //   method: 'POST',
+  //   headers: {
+  //     'Content-Type': 'application/json'
+  //   },
+  //   body: JSON.stringify(data)
+  // })
+  // .then((response) => {
+  //   return response.json();
+  // })
+  // .then((json) => {
+  //   callback.call(this, json);
+  // });
 }
 
 class AppContainer extends Component {
@@ -28,10 +45,10 @@ class AppContainer extends Component {
 
 
   componentDidMount() {
-    getData(this.updateData.bind(this));
+    fetchData(this.getData.bind(this));
   }
 
-  updateData(data) {
+  getData(data) {
     this.setState({
       folders: data.folders,
       items: data.items
@@ -88,7 +105,12 @@ class AppContainer extends Component {
     });
     this.setState({
       items: moved
-    }, this.unselectItems());
+    }, this.itemsDidMove());
+  }
+
+  itemsDidMove() {
+    this.unselectItems();
+    postData();
   }
 
   render() {
