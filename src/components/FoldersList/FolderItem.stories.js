@@ -1,4 +1,9 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from "react-router-dom";
 import FolderItem from './FolderItem';
 
 export default {
@@ -6,7 +11,7 @@ export default {
   title: 'FolderItem'
 }
 
-const Template = args => <FolderItem {...args }/>;
+const Template = args => <Router><FolderItem {...args }/></Router>;
 
 export const Default = Template.bind({});
 Default.args = {

@@ -1,6 +1,9 @@
 import './FolderItem.sass';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import {
+  Link
+} from "react-router-dom";
 import routes from '../../routes.js';
 
 class FolderItem extends Component {
@@ -44,7 +47,7 @@ class FolderItem extends Component {
     } = this.props;
 
     return (
-      <a href={(item && item.id) ? `${routes.folders}/${item.id}` : routes.root}
+      <Link to={(item && item.id) ? `${routes.folders}/${item.id}` : routes.root}
         className={this.getClassName()}
         onDragEnter={(e) => this.handleDragEnter(e)}
         onDragLeave={(e) => this.handleDragLeave(e)}
@@ -58,7 +61,7 @@ class FolderItem extends Component {
             `All projects`
           )
         }
-      </a>
+      </Link>
     )
   }
 }
